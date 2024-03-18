@@ -23,6 +23,15 @@ def moving_average(data, len_window):
 
 
 def rollingplot(lst, xaxis, yaxis, roll_length):
+    """
+    Plots the moving average of lst with window size roll_length
+
+    Params:
+    lst: the data, array-like
+    xaxis: label for the x axis, string
+    yaxis: label for the y axis, string
+    roll_length: moving average window
+    """
     values = moving_average(lst, roll_length)
     plt.plot(values)
     plt.xlabel(f"{xaxis}")
