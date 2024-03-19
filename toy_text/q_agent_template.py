@@ -16,6 +16,8 @@ class QAgent:
         initial_epsilon: float,
         epsilon_decay: float,
         final_epsilon: float,
+        n_states: int,
+        n_actions: int,
         discount_factor: float = 0.95,
     ):
         """
@@ -27,6 +29,8 @@ class QAgent:
         initial_epsilon: generally set to 1.
         epsilon_decay: multiplicative update to epsilon value
         final_epsilon: minimal epsilon value
+        n_states: number of states
+        n_actions: number of actions
         discount_factor: how much to discount future rewards
         step_wise_decay: whether to decay epsilon in batches or continuously
         """
@@ -37,8 +41,8 @@ class QAgent:
         self.final_epsilon = final_epsilon
         self.discount_factor = discount_factor
 
-        self.n_states = env.observation_space.n
-        self.n_actions = env.action_space.n
+        self.n_states = n_states
+        self.n_actions = n_actions
         self.q_table = np.zeros((self.n_states, self.n_actions))
         # self.q_table = defaultdict(lambda: np.zeros(env.action_space.n))
 

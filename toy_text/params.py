@@ -3,11 +3,12 @@ from typing import NamedTuple
 from pathlib import Path
 
 
-class Params(NamedTuple, env):
+class Params(NamedTuple):
     # framework params
     n_episodes: int
     n_runs: int
     savefig_folder: Path
+    roll_window: int
 
     # agent params
     learning_rate: float
@@ -18,5 +19,8 @@ class Params(NamedTuple, env):
 
     # env params
     seed: int
-    n_actions = env.action_space.n
-    n_states = env.observation_space.n
+    is_slippery: bool
+    proba_frozen: float
+    n_actions: int
+    n_states: int
+    map_size: int
