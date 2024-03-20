@@ -7,7 +7,6 @@ class Params(NamedTuple):
     # framework params
     n_episodes: int
     n_runs: int
-    savefig_folder: Path
     roll_window: int
 
     # agent params
@@ -19,8 +18,18 @@ class Params(NamedTuple):
 
     # env params
     seed: int
-    is_slippery: bool
-    proba_frozen: float
     n_actions: int
     n_states: int
+
+
+class FrozenLakeParams(Params):
     map_size: int
+    is_slippery: bool
+    proba_frozen: float
+    savefig_folder: Path
+
+
+class CartPoleParams(Params):
+    state_space_shape: tuple
+    buffer_capacity: int
+    batch_size: int

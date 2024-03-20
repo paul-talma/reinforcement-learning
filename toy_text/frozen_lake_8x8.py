@@ -11,26 +11,29 @@ from gymnasium.wrappers import RecordEpisodeStatistics
 from gymnasium.envs.toy_text.frozen_lake import generate_random_map
 
 from q_agent_template import QAgent
-from quickplot import quickplot
-from params import Params
+import params
 
 from IPython.display import display
 
 from pathlib import Path
 
 
-params = Params(
+params = params.FrozenLakeParams(
+    # framework params
     n_episodes=2000,
     n_runs=2,
     roll_window=100,
+    # agent params
     learning_rate=0.8,
     discount_factor=0.95,
     initial_epsilon=1,
     epsilon_decay=0.99,
     final_epsilon=0.1,
+    # env params
     seed=100,
     n_actions=None,
     n_states=None,
+    # env subclass params
     map_size=None,
     is_slippery=False,
     proba_frozen=0.9,
