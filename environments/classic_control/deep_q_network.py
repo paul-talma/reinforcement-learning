@@ -1,15 +1,15 @@
-import numpy as np
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.optimizers import Adam
+import torch.nn as nn
+import torch.nn.functional as F
 
 
-def q_network(input_shape, n_actions):
-    model = Sequential(
-        [
-            Dense(128, activation="relu", input_shape=input_shape),
-            Dense(128, activation="relu"),
-            Dense(n_actions, activation="linear"),
-        ]
-    )
-    model.compile(loss="mse", optimizer=Adam(lr=0.001))
+class deep_q_network(nn.Module):
+    def __init__(self, state_space, n_actions):
+        super(deep_q_network, self).__init__()
+        self.layer1 = nn.Linear(state_space, 128)
+        self.layer2 = nn.Linear(128, 128)
+        self.layer3 = nn.Linear(128, n_actions)
+
+    def forward(self, input):
+        output = F.relu(self.layer1(input))
+        output = F.relu(self.layer2(output))
+        return self.layer3(output)

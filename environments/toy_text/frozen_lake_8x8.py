@@ -11,7 +11,7 @@ from gymnasium.wrappers import RecordEpisodeStatistics
 from gymnasium.envs.toy_text.frozen_lake import generate_random_map
 
 from q_agent_template import QAgent
-import params
+import environments.classic_control.params as params
 
 from IPython.display import display
 
