@@ -28,5 +28,5 @@ def epsilon_greedy(q_network, env, state, epsilon, device):
         return q_network(state).max(1).indices.view(1, 1)
 
 
-def greedy(q_network, state):X
+def greedy(q_network, state):
     return q_network(state).max(1).indices.view(1, 1)

@@ -3,15 +3,17 @@ import torch
 import gymnasium as gym
 from action_selection import greedy
 
-env = gym.make("CartPole-v1", render_mode="human")
-state, _ = env.reset()
+env = gym.make("Acrobot-v1", render_mode="human")
+state, _ = env.reset(seed=7654)
 state_space = len(state)
 n_actions = env.action_space.n
 state = torch.tensor(state, dtype=torch.float32).unsqueeze(0)
 
 q_network = deep_q_network(state_space, n_actions)
 q_network.load_state_dict(
-    torch.load("environments/classic_control/saved_models/cart_pole_model.pth")
+    torch.load(
+        "/Users/paultalma/Programming/Python/reinforcement-learning/classic_control/mountain_car/saved_models/mountain_car_model.pth"
+    )
 )
 
 done = False
@@ -22,3 +24,4 @@ while not done:
     done = terminated or truncated
     next_state = torch.tensor(next_state, dtype=torch.float32).unsqueeze(0)
     state = next_state
+env.close()

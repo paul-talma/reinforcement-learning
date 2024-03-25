@@ -3,7 +3,7 @@ from IPython import display
 import torch
 
 
-def plot_rewards(episode_rewards, is_ipython, show_results=False):
+def plot_rewards(episode_rewards, epsilon_values, is_ipython, show_results=False):
     plt.figure(1)
     if show_results:
         plt.title("Result")
@@ -18,6 +18,13 @@ def plot_rewards(episode_rewards, is_ipython, show_results=False):
         means = rewards_tensor.unfold(0, 100, 1).mean(1).view(-1)
         means = torch.cat((torch.zeros(99), means))
         plt.plot(means.numpy())
+
+    if not show_results:
+        plt.figure(2)
+        plt.title("Epsilon")
+        plt.xlabel("Episodes")
+        plt.ylabel("Epsilon value")
+        plt.plot(epsilon_values)
 
     plt.pause(0.001)  # pause a bit so that plots are updated
     if is_ipython:
