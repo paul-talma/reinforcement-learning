@@ -63,8 +63,11 @@ for episode in range(n_episodes):
     done = False
     episode_reward = 0
     while not done:
+        # choose action
         action = epsilon_greedy(policy_net, env, state, epsilon, device)
+        # observe environment
         next_state, reward, terminated, truncated, _ = env.step(action.item())
+        
         episode_reward += reward
         reward = torch.tensor([reward], device=device)
         done = terminated or truncated
@@ -79,11 +82,7 @@ for episode in range(n_episodes):
         buffer.add(state, action, reward, next_state)
 
         state = next_state
-        # decay epsilon
-        # epsilon = final_epsilon + (initial_epsilon - final_epsilon) * math.exp(
-        #     -1.0 * steps / epsilon_decay
-        # )
-        # steps += 1
+
         epsilon = max(epsilon * 0.9996, final_epsilon)
 
         optimize(
