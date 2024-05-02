@@ -1,6 +1,8 @@
 # reinforcement-learning
 Implementations of reinforcement learning algorithms, including Deep Q-Learning
 
+Note: this project is in development and lacks full documentation. More algorithms will be added in the future, and they will be presented pedagogically. Fuller READMEs will also be provided.
+
 [toy_text](toy_text/) contains warm-up reinforcement learning environments. The small state space allows classic Q-Learning algorithms to succeed in solving the environments.
 
 [classic_control](classic_control/) contains environments with (in-principle) continuous state spaces and/or action spaces, requiring the use of more sophisticated methods to solve.
