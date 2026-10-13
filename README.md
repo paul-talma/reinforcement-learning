@@ -1,5 +1,5 @@
 # reinforcement-learning
-Implementations of reinforcement learning algorithms, including Deep Q-Learning
+Implementations of reinforcement learning algorithms
 
 Note: this project is in development and lacks full documentation. More algorithms will be added in the future, and they will be presented pedagogically. Fuller READMEs will also be provided.
 
